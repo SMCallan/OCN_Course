@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Practical Computing, IoT & Cyber Pathway</title>
+  <meta name="description" content="Student and staff-facing OCN London practical computing pathway using existing Level 2 units.">
+  <style>
+    :root{
+      --bg:#f7f4ec; --paper:#fffdf8; --ink:#17201c; --muted:#5b655f; --line:#d6cebf;
+      --green:#0b6b55; --green-2:#e2f5ee; --blue:#145ca9; --blue-2:#e8f2ff;
+      --purple:#5140a5; --purple-2:#f0edff; --orange:#9a411d; --orange-2:#fff0e8;
+      --yellow:#6b5400; --yellow-2:#fff7d5; --red:#992e2e; --red-2:#fff0f0;
+      --shadow:0 14px 35px rgba(23,32,28,.12); --radius:20px; --focus:0 0 0 4px rgba(20,92,169,.28); --max:1180px;
+    }
+    [data-theme="high"]{--bg:#fff;--paper:#fff;--ink:#000;--muted:#222;--line:#000;--green:#004b3a;--green-2:#fff;--blue:#003d7a;--blue-2:#fff;--purple:#321875;--purple-2:#fff;--orange:#7a2600;--orange-2:#fff;--yellow:#584000;--yellow-2:#fff;--red:#820000;--red-2:#fff;--shadow:none;--focus:0 0 0 4px #000}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 8% 0%,rgba(11,107,85,.12),transparent 30rem),radial-gradient(circle at 92% 0%,rgba(20,92,169,.12),transparent 30rem),var(--bg);color:var(--ink);line-height:1.55;font-size:16px}
+    a{color:var(--blue);font-weight:800} button,a,summary{touch-action:manipulation} button:focus-visible,a:focus-visible,summary:focus-visible{outline:none;box-shadow:var(--focus)}
+    .skip{position:absolute;left:-999px;top:1rem;background:var(--ink);color:#fff;padding:.75rem 1rem;border-radius:999px;z-index:99} .skip:focus{left:1rem}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 1.1rem}
+    header{padding:2rem 0 1.4rem} .topbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+    .brand{display:flex;align-items:center;gap:.7rem;font-weight:950;letter-spacing:.01em} .logo{width:46px;height:46px;display:grid;place-items:center;border-radius:16px;background:var(--ink);color:var(--paper);font-size:1.35rem}
+    .controls{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:flex-end} .pill-button,.small-button{border:2px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:.55rem .85rem;font-weight:900;cursor:pointer}
+    .pill-button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+    .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:1.2rem;align-items:stretch} .hero-card,.stat{background:var(--paper);border:2px solid var(--line);border-radius:calc(var(--radius) + 8px);padding:clamp(1.1rem,3vw,2rem);box-shadow:var(--shadow)}
+    .eyebrow{display:inline-flex;align-items:center;gap:.45rem;padding:.35rem .7rem;border-radius:999px;background:var(--green-2);color:var(--green);border:1px solid rgba(11,107,85,.25);font-weight:950;font-size:.92rem}
+    h1{font-size:clamp(2rem,5vw,4.45rem);line-height:.98;margin:.9rem 0 .8rem;letter-spacing:-.055em} .lede{font-size:clamp(1.06rem,2vw,1.25rem);max-width:70ch;color:var(--muted);font-weight:675}
+    .callout{border-left:8px solid var(--green);padding:1rem 1rem 1rem 1.15rem;background:var(--paper);border-radius:18px;box-shadow:var(--shadow)} .hero-stats{display:grid;gap:.75rem} .stat{border-radius:20px;padding:1rem} .stat strong{display:block;font-size:1.55rem;line-height:1.1} .stat span{color:var(--muted);font-weight:750}
+    nav{position:sticky;top:0;z-index:20;background:rgba(247,244,236,.92);backdrop-filter:blur(10px);border-block:1px solid var(--line)} [data-theme="high"] nav{background:#fff} .nav-inner{max-width:var(--max);margin:0 auto;display:flex;overflow:auto;gap:.45rem;padding:.6rem 1rem} .nav-inner a{color:var(--ink);text-decoration:none;white-space:nowrap;border:1px solid var(--line);background:var(--paper);padding:.45rem .75rem;border-radius:999px;font-size:.92rem}
+    section{padding:2rem 0} .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem;margin-bottom:1rem} h2{font-size:clamp(1.55rem,3vw,2.45rem);line-height:1.06;margin:0;letter-spacing:-.035em} h3{font-size:1.17rem;margin:.15rem 0 .45rem} .sub,.muted{color:var(--muted)} .sub{margin:.35rem 0 0;max-width:78ch}
+    .grid{display:grid;gap:1rem} .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))} .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))} .grid.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .card{background:var(--paper);border:2px solid var(--line);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)} .card.green{background:var(--green-2);border-color:rgba(11,107,85,.3)} .card.blue{background:var(--blue-2);border-color:rgba(20,92,169,.3)} .card.purple{background:var(--purple-2);border-color:rgba(81,64,165,.3)} .card.orange{background:var(--orange-2);border-color:rgba(154,65,29,.3)} .card.yellow{background:var(--yellow-2);border-color:rgba(107,84,0,.3)} .card.red{background:var(--red-2);border-color:rgba(153,46,46,.3)}
+    .tag{display:inline-flex;gap:.35rem;align-items:center;margin:.1rem .25rem .25rem 0;border:1px solid var(--line);border-radius:999px;padding:.28rem .55rem;background:rgba(255,255,255,.6);font-weight:850;font-size:.86rem}
+    .flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.8rem;align-items:stretch;counter-reset:stage} .flow-card{position:relative;background:var(--paper);border:2px solid var(--line);border-radius:22px;padding:1rem;min-height:225px;box-shadow:var(--shadow)} .flow-card:before{counter-increment:stage;content:counter(stage);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--ink);color:var(--paper);font-weight:950;margin-bottom:.6rem} .flow-card:not(:last-child):after{content:"→";position:absolute;top:50%;right:-.72rem;transform:translateY(-50%);width:1.35rem;height:1.35rem;display:grid;place-items:center;background:var(--ink);color:var(--paper);border-radius:50%;font-weight:950;z-index:2} .flow-card .big{font-size:1.13rem;font-weight:950;display:block;line-height:1.15} .flow-card ul{padding-left:1.1rem;margin:.65rem 0 0}
+    .unit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem} .unit{text-align:left;width:100%;background:var(--paper);border:2px solid var(--line);border-radius:22px;padding:1rem;box-shadow:var(--shadow);cursor:pointer;display:flex;flex-direction:column;gap:.55rem;min-height:315px} .unit:hover{transform:translateY(-2px)} .unit-title{font-size:1.16rem;font-weight:950;line-height:1.1} .unit-code{font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;font-weight:950} .unit .meta{display:flex;flex-wrap:wrap;gap:.35rem} .unit .meta span{background:rgba(255,255,255,.75);border:1px solid var(--line);border-radius:999px;padding:.22rem .5rem;font-size:.84rem;font-weight:850} .unit .cta{margin-top:auto;font-weight:950;color:var(--blue)}
+    .table-wrap{overflow:auto;border:2px solid var(--line);border-radius:18px;background:var(--paper)} table{border-collapse:collapse;width:100%;min-width:720px} th,td{padding:.8rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top} th{background:var(--ink);color:var(--paper)} tr:last-child td{border-bottom:none}
+    details{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:.8rem 1rem;box-shadow:var(--shadow)} details + details{margin-top:.8rem} summary{font-weight:950;cursor:pointer;font-size:1.05rem} details p,details ul{margin:.6rem 0 0}
+    body[data-view="student"] .staff-only{display:none!important} body[data-view="staff"] .student-only{display:none!important}
+    .footer{padding:2rem 0 3rem;color:var(--muted);border-top:1px solid var(--line)}
+    dialog{border:none;border-radius:26px;width:min(820px,calc(100vw - 2rem));box-shadow:0 30px 80px rgba(0,0,0,.35);padding:0;background:var(--paper);color:var(--ink)} dialog::backdrop{background:rgba(0,0,0,.55)} .modal-head{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;padding:1.25rem;border-bottom:1px solid var(--line);background:var(--blue-2)} .modal-body{padding:1.25rem} .modal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.9rem} .close{border:2px solid var(--line);background:var(--paper);border-radius:999px;width:42px;height:42px;font-size:1.2rem;cursor:pointer;font-weight:950} .source-link{margin-top:1rem}
+    @media(max-width:900px){.hero,.grid.two,.grid.three,.grid.four,.unit-grid,.flow,.modal-grid{grid-template-columns:1fr} .flow-card:not(:last-child):after{content:"↓";top:auto;right:50%;bottom:-.75rem;transform:translateX(50%)} .section-head{align-items:flex-start;flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important} .unit:hover{transform:none}}
+  </style>
+</head>
+<body data-view="student" data-theme="normal">
+  <a class="skip" href="#main">Skip to main content</a>
+  <header>
+    <div class="wrap">
+      <div class="topbar">
+        <div class="brand"><div class="logo" aria-hidden="true">⚙️</div><div>Young Lewisham Project<br><span class="muted">OCN practical digital pathway draft</span></div></div>
+        <div class="controls" aria-label="Page controls">
+          <button class="pill-button" type="button" data-view-btn="student" aria-pressed="true">Student view</button>
+          <button class="pill-button" type="button" data-view-btn="staff" aria-pressed="false">Staff view</button>
+          <button class="small-button" type="button" id="contrastBtn" aria-pressed="false">High contrast</button>
+        </div>
+      </div>
+      <div class="hero">
+        <div class="hero-card">
+          <span class="eyebrow">Starter → Award → Certificate → Extensions</span>
+          <h1>Practical Computing, IoT & Cyber Pathway</h1>
+          <p class="lede">A hands-on route where learners build things, connect things, understand how digital systems work, and learn how to use technology safely.</p>
+          <div class="callout"><strong>Core idea:</strong> start with accessible micro:bit sessions, then move into existing OCN London Level 2 units. The main accredited route is the Level 2 Award, with a clear route into the Certificate and optional coding, cyber, networking, web, game or AI extensions.</div>
+        </div>
+        <div class="hero-stats" aria-label="Key facts">
+          <div class="stat"><strong>3-6</strong><span>learners per group; 4 is ideal</span></div>
+          <div class="stat"><strong>Practical</strong><span>builds, demos, photos, screenshots and short explanations</span></div>
+          <div class="stat"><strong>Level 2</strong><span>uses existing OCN London units, not a new bespoke qualification</span></div>
+          <div class="stat"><strong>Accessible</strong><span>choice-based, visual, tiered and high-contrast friendly</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <nav aria-label="Main sections"><div class="nav-inner"><a href="#pathway">Pathway</a><a href="#units">Unit choices</a><a href="#award">Award</a><a href="#certificate">Certificate</a><a href="#staff">Staff notes</a><a href="#sources">Sources</a></div></nav>
+  <main id="main">
+    <section id="pathway">
+      <div class="wrap">
+        <div class="section-head"><div><h2>The learner journey</h2><p class="sub">The micro:bit stage is the entry ramp. Formal accreditation begins when the learner is ready for the Award units.</p></div></div>
+        <div class="flow" role="list" aria-label="Progression flow chart">
+          <article class="flow-card green" role="listitem"><span class="big">Starter sessions</span><p><strong>micro:bit entry ramp</strong><br>Low-pressure, hands-on confidence building.</p><ul><li>Make lights, buttons and sensors react</li><li>Learn loops and inputs visually</li><li>Informal, or used as evidence later where appropriate</li></ul></article>
+          <article class="flow-card blue" role="listitem"><span class="big">Level 2 Award</span><p><strong>Main accredited route</strong><br>Build/configure a computer, then design an IoT-style connected process.</p><ul><li>Hardware and Software - 4 credits</li><li>Emerging Technologies & IoT - 5 credits</li><li>Total: 9 credits</li></ul></article>
+          <article class="flow-card purple" role="listitem"><span class="big">Level 2 Certificate</span><p><strong>For continuing learners</strong><br>Add safety/security and a linked green/employability project.</p><ul><li>12 digital credits</li><li>4 green/employability credits</li><li>Total: 16 credits</li></ul></article>
+          <article class="flow-card orange" role="listitem"><span class="big">Extension choices</span><p><strong>For returners or stronger learners</strong></p><ul><li>Python programming</li><li>Cyber security</li><li>Networks, web or games</li><li>AI tools if useful</li></ul></article>
+        </div>
+      </div>
+    </section>
+    <section class="student-only">
+      <div class="wrap"><div class="grid four"><div class="card green"><h3>Build</h3><p>Set up real hardware and understand what the parts do.</p></div><div class="card blue"><h3>Code</h3><p>Start simple with micro:bit, then move toward Python or web if ready.</p></div><div class="card purple"><h3>Connect</h3><p>Design an IoT-style project that senses, responds or improves something real.</p></div><div class="card orange"><h3>Secure</h3><p>Learn passwords, privacy, backups, updates and safer technology habits.</p></div></div></div>
+    </section>
+    <section id="units">
+      <div class="wrap">
+        <div class="section-head"><div><h2>Clickable unit choices</h2><p class="sub">Each unit uses the same learner-friendly structure: what it is, how it is delivered, what you might make, evidence and where it leads.</p></div></div>
+        <div class="unit-grid">
+        <button class="unit green" type="button" data-unit="hardware">
+          <span class="unit-title">Hardware and Software</span>
+          <span class="unit-code">L/616/8897</span>
+          <span class="meta"><span>4 credits</span><span>32 GLH</span><span>Award core</span></span>
+          <p><strong>What this is:</strong> You learn what the parts of a computer do and how a working computer system is put together.</p>
+          <p><strong>You will:</strong> You build or configure a Raspberry Pi, Pi 400 or small computer setup, install an operating system, install/uninstall software and complete basic system tasks.</p>
+          <span class="cta">Open learner-friendly details →</span>
+        </button>
+        <button class="unit green" type="button" data-unit="iot">
+          <span class="unit-title">Emerging Technologies and the Internet of Things</span>
+          <span class="unit-code">T/617/4757</span>
+          <span class="meta"><span>5 credits</span><span>40 GLH</span><span>Award core</span></span>
+          <p><strong>What this is:</strong> You explore how connected devices work and how technology can solve practical problems.</p>
+          <p><strong>You will:</strong> You design an IoT-style process with inputs, outputs, a system diagram, hardware/software choices and feedback-driven improvements.</p>
+          <span class="cta">Open learner-friendly details →</span>
+        </button>
+        <button class="unit orange" type="button" data-unit="digital_safety">
+          <span class="unit-title">Digital Safety and Security</span>
+          <span class="unit-code">J/616/8896</span>
+          <span class="meta"><span>3 credits</span><span>24 GLH</span><span>Certificate / cyber-light</span></span>
+          <p><strong>What this is:</strong> You learn how to use devices and online services more safely and responsibly.</p>
+          <p><strong>You will:</strong> You practise safer passwords, privacy choices, browser/client security settings, backups, malware awareness and safe/legal online behaviour.</p>
+          <span class="cta">Open learner-friendly details →</span>
+        </button>
+        <button class="unit blue" type="button" data-unit="programming">
+          <span class="unit-title">Programming Fundamentals</span>
+          <span class="unit-code">J/616/8901</span>
+          <span class="meta"><span>4 credits</span><span>32 GLH</span><span>Extension / coding</span></span>
+          <p><strong>What this is:</strong> You learn the basic building blocks used by real programmers.</p>
+          <p><strong>You will:</strong> You use data types, calculations, decisions, loops, functions, arrays, logic, files and debugging.</p>
+          <span class="cta">Open learner-friendly details →</span>
+        </button>
+        <button class="unit red" type="button" data-unit="cyber">
+          <span class="unit-title">Cyber Security</span>
+          <span class="unit-code">H/617/4754</span>
+          <span class="meta"><span>6 credits</span><span>48 GLH</span><span>Extension / cyber</span></span>
+          <p><strong>What this is:</strong> You learn how people and organisations protect systems, data and users.</p>
+          <p><strong>You will:</strong> You explore threats, vulnerabilities, confidentiality/integrity/availability, risk assessment and protective controls.</p>
+          <span class="cta">Open learner-friendly details →</span>
+        </button>
+        <button class="unit yellow" type="button" data-unit="networks">
+          <span class="unit-title">Computer Networks</span>
+          <span class="unit-code">J/616/8994</span>
+          <span class="meta"><span>3 credits</span><span>24 GLH</span><span>Extension / networks</span></span>
+          <p><strong>What this is:</strong> You learn how computers connect and share information safely.</p>
+          <p><strong>You will:</strong> You explore LAN, WAN, WLAN, VPNs, wired/wireless choices, user accounts, file transfer and basic network security.</p>
+          <span class="cta">Open learner-friendly details →</span>
+        </button>
+        <button class="unit blue" type="button" data-unit="htmlcss">
+          <span class="unit-title">HTML and CSS Basics</span>
+          <span class="unit-code">R/616/8898</span>
+          <span class="meta"><span>3 credits</span><span>24 GLH</span><span>Extension / web</span></span>
+          <p><strong>What this is:</strong> You learn how simple websites are built and styled.</p>
+          <p><strong>You will:</strong> You create web pages with headings, text, links, images, layout and CSS styling.</p>
+          <span class="cta">Open learner-friendly details →</span>
+        </button>
+        <button class="unit purple" type="button" data-unit="thinking">
+          <span class="unit-title">Computational Thinking Concepts</span>
+          <span class="unit-code">T/616/8893</span>
+          <span class="meta"><span>2 credits</span><span>16 GLH</span><span>Bridge unit</span></span>
+          <p><strong>What this is:</strong> You learn how to break problems down so computers or people can solve them.</p>
+          <p><strong>You will:</strong> You practise algorithms, decomposition, patterns, abstraction, automation, simulation and data representation.</p>
+          <span class="cta">Open learner-friendly details →</span>
+        </button>
+        <button class="unit green" type="button" data-unit="sustainability">
+          <span class="unit-title">Project in Sustainability</span>
+          <span class="unit-code">F/650/1980</span>
+          <span class="meta"><span>3 credits</span><span>27 GLH</span><span>Certificate add-on</span></span>
+          <p><strong>What this is:</strong> You use a practical project to explore sustainability and improvement.</p>
+          <p><strong>You will:</strong> You plan, carry out, present and review a sustainability project.</p>
+          <span class="cta">Open learner-friendly details →</span>
+        </button>
+        <button class="unit green" type="button" data-unit="green_careers">
+          <span class="unit-title">Exploring Careers in Green Industries</span>
+          <span class="unit-code">M/650/1985</span>
+          <span class="meta"><span>1 credits</span><span>8 GLH</span><span>Certificate add-on</span></span>
+          <p><strong>What this is:</strong> You explore green industries and the kinds of jobs connected to sustainability.</p>
+          <p><strong>You will:</strong> You look at job roles, skills, qualifications and your own next steps.</p>
+          <span class="cta">Open learner-friendly details →</span>
+        </button>
+        <button class="unit orange" type="button" data-unit="game">
+          <span class="unit-title">Computer Game Development</span>
+          <span class="unit-code">D/617/4753</span>
+          <span class="meta"><span>10 credits</span><span>80 GLH</span><span>Future extension</span></span>
+          <p><strong>What this is:</strong> You learn how games are planned, built, tested and improved.</p>
+          <p><strong>You will:</strong> You create a game idea, design the rules/mechanics, build a prototype and test it.</p>
+          <span class="cta">Open learner-friendly details →</span>
+        </button>
+        <button class="unit red" type="button" data-unit="ai">
+          <span class="unit-title">Applying AI Tools in Learning and Work</span>
+          <span class="unit-code">T/651/9013</span>
+          <span class="meta"><span>3 credits</span><span>30 GLH</span><span>Optional AI layer</span></span>
+          <p><strong>What this is:</strong> You learn how to use AI tools safely, responsibly and usefully.</p>
+          <p><strong>You will:</strong> You compare AI tools, choose a suitable tool for a task, check outputs and avoid sharing personal data.</p>
+          <span class="cta">Open learner-friendly details →</span>
+        </button></div>
+      </div>
+    </section>
+    <section id="award">
+      <div class="wrap">
+        <div class="section-head"><div><h2>Main Award route</h2><p class="sub">This is the cleanest first accredited route after the starter sessions.</p></div></div>
+        <div class="table-wrap" role="region" aria-label="Award route table" tabindex="0"><table><thead><tr><th>Part</th><th>Unit</th><th>Credits</th><th>What the learner does</th><th>Evidence</th></tr></thead><tbody><tr><td>Starter</td><td>micro:bit sessions</td><td>-</td><td>Low-pressure practical tasks: lights, buttons, sensors, loops and simple cause/effect.</td><td>Demo, photos, confidence notes. Can support later evidence where appropriate.</td></tr><tr><td>Core 1</td><td><a href="https://ocnlondon.org.uk/app/uploads/files/units/na/L_616_8897.pdf">Hardware and Software</a></td><td>4</td><td>Build/configure a Raspberry Pi, Pi 400 or small computer station.</td><td>Photos, observation, OS screenshot, app install/uninstall and system task.</td></tr><tr><td>Core 2</td><td><a href="https://ocnlondon.org.uk/app/uploads/files/units/na/T_617_4757.pdf">Emerging Technologies and IoT</a></td><td>5</td><td>Design and demonstrate an IoT-style connected process or prototype.</td><td>Diagram, flowchart, inputs/outputs, hardware/software list, demo and improvement.</td></tr><tr><td><strong>Total</strong></td><td><strong>Level 2 Award route</strong></td><td><strong>9</strong></td><td colspan="2">The Award minimum is 6 digital credits, so this route exceeds the minimum. Confirm final registration with OCN/CRDM.</td></tr></tbody></table></div>
+      </div>
+    </section>
+    <section id="certificate">
+      <div class="wrap">
+        <div class="section-head"><div><h2>Certificate route</h2><p class="sub">For learners who continue beyond the Award.</p></div></div>
+        <div class="table-wrap" role="region" aria-label="Certificate route table" tabindex="0"><table><thead><tr><th>Group</th><th>Unit</th><th>Credits</th><th>Purpose</th></tr></thead><tbody><tr><td>Digital</td><td><a href="https://ocnlondon.org.uk/app/uploads/files/units/na/L_616_8897.pdf">Hardware and Software</a></td><td>4</td><td>Computer build/configuration.</td></tr><tr><td>Digital</td><td><a href="https://ocnlondon.org.uk/app/uploads/files/units/na/T_617_4757.pdf">Emerging Technologies and IoT</a></td><td>5</td><td>Connected device/process design.</td></tr><tr><td>Digital</td><td><a href="https://ocnlondon.org.uk/app/uploads/files/units/na/J_616_8896.pdf">Digital Safety and Security</a></td><td>3</td><td>Light cyber/safety layer.</td></tr><tr><td><strong>Digital subtotal</strong></td><td></td><td><strong>12</strong></td><td>Meets the minimum 12 digital credits requirement for the Certificate.</td></tr><tr><td>Green</td><td><a href="https://ocnlondon.org.uk/app/uploads/files/units/na/F_650_1980.pdf">Project in Sustainability</a></td><td>3</td><td>Use the tech project to explore a practical sustainability theme.</td></tr><tr><td>Green</td><td><a href="https://ocnlondon.org.uk/app/uploads/files/units/na/M_650_1985.pdf">Exploring Careers in Green Industries</a></td><td>1</td><td>Connect the project to future jobs and skills.</td></tr><tr><td><strong>Total</strong></td><td><strong>Level 2 Certificate route</strong></td><td><strong>16</strong></td><td>12 digital + 4 green/employability credits.</td></tr></tbody></table></div>
+      </div>
+    </section>
+    <section id="staff" class="staff-only">
+      <div class="wrap">
+        <div class="section-head"><div><h2>Staff view: delivery, mentoring and resources</h2><p class="sub">For Dom/management planning: approval, rooming, timetable, equipment, evidence and OCN registration.</p></div></div>
+        <div class="grid two">
+          <div class="card green"><h3>Activity-led mentoring rationale</h3><p>Some learners are ambivalent about formal 1:1 mentoring. A practical computing workshop creates rapport through side-by-side problem solving, shared tasks, visible progress and low-pressure conversation. The computing is the engagement vehicle; mentoring and safeguarding support happen through the activity.</p></div>
+          <div class="card blue"><h3>Delivery model</h3><ul><li>Cohort: 3-6 learners, with 4 ideal.</li><li>One fixed weekday and one consistent room.</li><li>One lead tutor/mentor; above 6 learners needs another adult or more kit.</li><li>Available Monday to Friday once day/room are agreed.</li></ul></div>
+          <div class="card purple"><h3>SEND/accessibility design</h3><ul><li>Designed for learners with ASD, ADHD, ODD, SEMH needs or disrupted mainstream education histories.</li><li>Predictable routine, choice-based tasks, visual instructions and short wins.</li><li>Oral evidence and practical demonstrations where suitable.</li><li>High-contrast materials and tiered difficulty.</li></ul></div>
+          <div class="card orange"><h3>AI relationship</h3><p>A separate AI awareness OCN proposal may be developed by another staff member. This practical pathway can run alongside it. If that AI route does not proceed, selected AI tools units can be added later as an optional layer.</p></div>
+        </div>
+        <details style="margin-top:1rem"><summary>Equipment and budget</summary><p><strong>Budget principle:</strong> the order should cover what is genuinely needed to run the pathway properly. Donated monitors/desktops/laptops can reduce spend, but the course should only rely on donated equipment once it has been checked, wiped, tested and stored.</p><div class="table-wrap" role="region" aria-label="Budget table" tabindex="0"><table><thead><tr><th>Required capacity</th><th>Minimum needed</th><th>Notes</th></tr></thead><tbody><tr><td>Starter devices</td><td>6 micro:bits</td><td>Allows every learner to have an individual first-win device.</td></tr><tr><td>Computer stations</td><td>3 reliable stations</td><td>Supports 3 individual learners or 4-6 in pairs.</td></tr><tr><td>Build/demo setup</td><td>1 Raspberry Pi/openable PC setup</td><td>Protects Hardware and Software evidence around assembling/configuring a system.</td></tr><tr><td>Displays</td><td>3 HDMI monitors/screens</td><td>Could be sourced via Catbytes, Lewisham Council or another local partner.</td></tr><tr><td>Sensors/tools/storage</td><td>Basic sensors, cables, SD cards, labels, lockable storage, small tools</td><td>Not optional; prevents kit loss, confusion and session failure.</td></tr><tr><td>OCN registration</td><td>3-6 learners</td><td>Budget separately from hardware.</td></tr></tbody></table></div><p><strong>Planning estimate:</strong> around £1,000-ish if monitors/screens are donated; about £1,250-ish if screens need to be bought. Final purchasing should follow a quick equipment check and local donation request.</p></details>
+        <details><summary>Portfolio evidence model</summary><p>Use one digital folder per learner. Evidence should be captured during practical work: photos, screenshots, short video/demo, observation records, verbal Q&A notes, diagrams, flowcharts and brief reflections. Avoid making the course feel like an exam.</p></details>
+        <details><summary>Immediate next steps</summary><ul><li>Confirm day of week and room.</li><li>Confirm cohort/referral route and maximum group size.</li><li>Confirm OCN Award registration route with CRDM/OCN.</li><li>Ask Catbytes/Lewisham Council about monitors, desktops or laptops.</li><li>Agree order list, storage location and evidence folder setup.</li></ul></details>
+      </div>
+    </section>
+    <section id="sources">
+      <div class="wrap">
+        <div class="section-head"><div><h2>Official links</h2><p class="sub">The route is built around existing OCN London pages and unit specifications.</p></div></div>
+        <div class="grid two"><div class="card"><h3>Qualification links</h3><ul><li><a href="https://ocnlondon.org.uk/qualifications/digital-comp/l2-award-sfp-digital-ind-tech/">Level 2 Award page</a></li><li><a href="https://ocnlondon.org.uk/qualifications/digital-comp/l2-cert-sfp-digital-ind-tech/">Level 2 Certificate page</a></li><li><a href="https://ocnlondon.org.uk/app/uploads/files/documents/L2%20SfP%20in%20Digital%20Industries%20%26%20Technology.pdf">Qualification guide</a></li><li><a href="https://ocnlondon.org.uk/qualifications/unit-bank/">OCN London unit bank</a></li></ul></div><div class="card"><h3>Local / equipment links</h3><ul><li><a href="https://catbytes.community/our-services">Catbytes services</a></li><li><a href="https://thepihut.com/products/raspberry-pi-400">Raspberry Pi 400 reference pricing</a></li></ul></div></div>
+      </div>
+    </section>
+  </main>
+  <dialog id="unitDialog" aria-labelledby="modalTitle"><div class="modal-head"><div><h2 id="modalTitle" style="margin:0">Unit details</h2><p id="modalMeta" class="sub" style="margin:.35rem 0 0"></p></div><button class="close" type="button" aria-label="Close dialog" id="closeDialog">×</button></div><div class="modal-body" id="modalBody"></div></dialog>
+  <footer class="footer"><div class="wrap"><p><strong>Draft use:</strong> internal discussion and learner-facing presentation page. Confirm final OCN registration details with OCN London / CRDM before enrolling learners.</p></div></footer>
+  <script>
+    const units = {"hardware": {"title": "Hardware and Software", "meta": "L/616/8897 • Level 2 • 4 credits • 32 GLH • Award core", "url": "https://ocnlondon.org.uk/app/uploads/files/units/na/L_616_8897.pdf", "body": "\n          <div class='modal-grid'>\n            <div><h3>What this unit is</h3><p>You learn what the parts of a computer do and how a working computer system is put together.</p></div>\n            <div><h3>How it will be delivered</h3><p>You build or configure a Raspberry Pi, Pi 400 or small computer setup, install an operating system, install/uninstall software and complete basic system tasks.</p></div>\n            <div><h3>What you might make</h3><p>A working computer station that can be used for coding, web, IoT or cyber-safe activities.</p></div>\n            <div><h3>How evidence is captured</h3><p>Build photos, tutor observation, OS screenshot, app install/uninstall task, backup/compression task and a short verbal explanation.</p></div>\n            <div><h3>Where this can lead</h3><p>Main route into the Level 2 Award and practical IT support confidence.</p></div>\n          </div>\n          <p class='source-link'><a href='https://ocnlondon.org.uk/app/uploads/files/units/na/L_616_8897.pdf'>Open exact OCN unit PDF</a></p>\n        "}, "iot": {"title": "Emerging Technologies and the Internet of Things", "meta": "T/617/4757 • Level 2 • 5 credits • 40 GLH • Award core", "url": "https://ocnlondon.org.uk/app/uploads/files/units/na/T_617_4757.pdf", "body": "\n          <div class='modal-grid'>\n            <div><h3>What this unit is</h3><p>You explore how connected devices work and how technology can solve practical problems.</p></div>\n            <div><h3>How it will be delivered</h3><p>You design an IoT-style process with inputs, outputs, a system diagram, hardware/software choices and feedback-driven improvements.</p></div>\n            <div><h3>What you might make</h3><p>A sensor idea or prototype such as a room monitor, door alert, plant monitor, air-quality concept or workshop tracker.</p></div>\n            <div><h3>How evidence is captured</h3><p>Diagram, flowchart, hardware/software list, demo or simulation, feedback and one improvement.</p></div>\n            <div><h3>Where this can lead</h3><p>Completes the core Award route when combined with Hardware and Software.</p></div>\n          </div>\n          <p class='source-link'><a href='https://ocnlondon.org.uk/app/uploads/files/units/na/T_617_4757.pdf'>Open exact OCN unit PDF</a></p>\n        "}, "digital_safety": {"title": "Digital Safety and Security", "meta": "J/616/8896 • Level 2 • 3 credits • 24 GLH • Certificate / cyber-light", "url": "https://ocnlondon.org.uk/app/uploads/files/units/na/J_616_8896.pdf", "body": "\n          <div class='modal-grid'>\n            <div><h3>What this unit is</h3><p>You learn how to use devices and online services more safely and responsibly.</p></div>\n            <div><h3>How it will be delivered</h3><p>You practise safer passwords, privacy choices, browser/client security settings, backups, malware awareness and safe/legal online behaviour.</p></div>\n            <div><h3>What you might make</h3><p>A simple security checklist for your own device or project setup.</p></div>\n            <div><h3>How evidence is captured</h3><p>Screenshots, checklist, tutor observation, short Q&amp;A and practical security tasks.</p></div>\n            <div><h3>Where this can lead</h3><p>Good Certificate unit and a lighter cyber route before the full Cyber Security unit.</p></div>\n          </div>\n          <p class='source-link'><a href='https://ocnlondon.org.uk/app/uploads/files/units/na/J_616_8896.pdf'>Open exact OCN unit PDF</a></p>\n        "}, "programming": {"title": "Programming Fundamentals", "meta": "J/616/8901 • Level 2 • 4 credits • 32 GLH • Extension / coding", "url": "https://ocnlondon.org.uk/app/uploads/files/units/na/J_616_8901.pdf", "body": "\n          <div class='modal-grid'>\n            <div><h3>What this unit is</h3><p>You learn the basic building blocks used by real programmers.</p></div>\n            <div><h3>How it will be delivered</h3><p>You use data types, calculations, decisions, loops, functions, arrays, logic, files and debugging.</p></div>\n            <div><h3>What you might make</h3><p>Python scripts that control sensors, process information or automate a small task.</p></div>\n            <div><h3>How evidence is captured</h3><p>Code files, screenshots, debugging notes and a short demo of a working program.</p></div>\n            <div><h3>Where this can lead</h3><p>Best for learners ready to move from making things work into proper coding.</p></div>\n          </div>\n          <p class='source-link'><a href='https://ocnlondon.org.uk/app/uploads/files/units/na/J_616_8901.pdf'>Open exact OCN unit PDF</a></p>\n        "}, "cyber": {"title": "Cyber Security", "meta": "H/617/4754 • Level 2 • 6 credits • 48 GLH • Extension / cyber", "url": "https://ocnlondon.org.uk/app/uploads/files/units/na/H_617_4754.pdf", "body": "\n          <div class='modal-grid'>\n            <div><h3>What this unit is</h3><p>You learn how people and organisations protect systems, data and users.</p></div>\n            <div><h3>How it will be delivered</h3><p>You explore threats, vulnerabilities, confidentiality/integrity/availability, risk assessment and protective controls.</p></div>\n            <div><h3>What you might make</h3><p>A defensive security improvement plan or safe lab task, such as hardening a device or explaining risks and controls.</p></div>\n            <div><h3>How evidence is captured</h3><p>Risk table, short explanations, tutor observation and a practical defensive security task.</p></div>\n            <div><h3>Where this can lead</h3><p>A stronger second-term cyber pathway for learners who want security, IT support or ethical hacking foundations.</p></div>\n          </div>\n          <p class='source-link'><a href='https://ocnlondon.org.uk/app/uploads/files/units/na/H_617_4754.pdf'>Open exact OCN unit PDF</a></p>\n        "}, "networks": {"title": "Computer Networks", "meta": "J/616/8994 • Level 2 • 3 credits • 24 GLH • Extension / networks", "url": "https://ocnlondon.org.uk/app/uploads/files/units/na/J_616_8994.pdf", "body": "\n          <div class='modal-grid'>\n            <div><h3>What this unit is</h3><p>You learn how computers connect and share information safely.</p></div>\n            <div><h3>How it will be delivered</h3><p>You explore LAN, WAN, WLAN, VPNs, wired/wireless choices, user accounts, file transfer and basic network security.</p></div>\n            <div><h3>What you might make</h3><p>A small local network demo or safe file-sharing setup between devices.</p></div>\n            <div><h3>How evidence is captured</h3><p>Network diagram, screenshots, file-transfer evidence and a short explanation.</p></div>\n            <div><h3>Where this can lead</h3><p>Useful for IT support, cyber and infrastructure-minded learners.</p></div>\n          </div>\n          <p class='source-link'><a href='https://ocnlondon.org.uk/app/uploads/files/units/na/J_616_8994.pdf'>Open exact OCN unit PDF</a></p>\n        "}, "htmlcss": {"title": "HTML and CSS Basics", "meta": "R/616/8898 • Level 2 • 3 credits • 24 GLH • Extension / web", "url": "https://ocnlondon.org.uk/app/uploads/files/units/na/R_616_8898.pdf", "body": "\n          <div class='modal-grid'>\n            <div><h3>What this unit is</h3><p>You learn how simple websites are built and styled.</p></div>\n            <div><h3>How it will be delivered</h3><p>You create web pages with headings, text, links, images, layout and CSS styling.</p></div>\n            <div><h3>What you might make</h3><p>A project page, portfolio page or simple dashboard explaining your IoT/device build.</p></div>\n            <div><h3>How evidence is captured</h3><p>HTML/CSS files, screenshots, browser demo and brief explanation of design choices.</p></div>\n            <div><h3>Where this can lead</h3><p>Good for learners interested in web, design, portfolios, music/art pages or project showcases.</p></div>\n          </div>\n          <p class='source-link'><a href='https://ocnlondon.org.uk/app/uploads/files/units/na/R_616_8898.pdf'>Open exact OCN unit PDF</a></p>\n        "}, "thinking": {"title": "Computational Thinking Concepts", "meta": "T/616/8893 • Level 2 • 2 credits • 16 GLH • Bridge unit", "url": "https://ocnlondon.org.uk/app/uploads/files/units/na/T_616_8893.pdf", "body": "\n          <div class='modal-grid'>\n            <div><h3>What this unit is</h3><p>You learn how to break problems down so computers or people can solve them.</p></div>\n            <div><h3>How it will be delivered</h3><p>You practise algorithms, decomposition, patterns, abstraction, automation, simulation and data representation.</p></div>\n            <div><h3>What you might make</h3><p>Flowcharts, step-by-step instructions, logic plans and simple micro:bit/Pi process maps.</p></div>\n            <div><h3>How evidence is captured</h3><p>Worksheets, diagrams, tutor observation and a short explanation of your process.</p></div>\n            <div><h3>Where this can lead</h3><p>Useful bridge for learners not quite ready for Programming Fundamentals.</p></div>\n          </div>\n          <p class='source-link'><a href='https://ocnlondon.org.uk/app/uploads/files/units/na/T_616_8893.pdf'>Open exact OCN unit PDF</a></p>\n        "}, "sustainability": {"title": "Project in Sustainability", "meta": "F/650/1980 • Level 2 • 3 credits • 27 GLH • Certificate add-on", "url": "https://ocnlondon.org.uk/app/uploads/files/units/na/F_650_1980.pdf", "body": "\n          <div class='modal-grid'>\n            <div><h3>What this unit is</h3><p>You use a practical project to explore sustainability and improvement.</p></div>\n            <div><h3>How it will be delivered</h3><p>You plan, carry out, present and review a sustainability project.</p></div>\n            <div><h3>What you might make</h3><p>An environmental or workshop improvement project linked to sensors, reuse, repair, energy, plants or air quality.</p></div>\n            <div><h3>How evidence is captured</h3><p>Project plan, photos, presentation/demo and reflection on what worked.</p></div>\n            <div><h3>Where this can lead</h3><p>Pairs well with IoT for the Level 2 Certificate route.</p></div>\n          </div>\n          <p class='source-link'><a href='https://ocnlondon.org.uk/app/uploads/files/units/na/F_650_1980.pdf'>Open exact OCN unit PDF</a></p>\n        "}, "green_careers": {"title": "Exploring Careers in Green Industries", "meta": "M/650/1985 • Level 2 • 1 credits • 8 GLH • Certificate add-on", "url": "https://ocnlondon.org.uk/app/uploads/files/units/na/M_650_1985.pdf", "body": "\n          <div class='modal-grid'>\n            <div><h3>What this unit is</h3><p>You explore green industries and the kinds of jobs connected to sustainability.</p></div>\n            <div><h3>How it will be delivered</h3><p>You look at job roles, skills, qualifications and your own next steps.</p></div>\n            <div><h3>What you might make</h3><p>A simple career pathway map linked to tech, repair, energy, environment or smart buildings.</p></div>\n            <div><h3>How evidence is captured</h3><p>Career research notes and a short personal development plan.</p></div>\n            <div><h3>Where this can lead</h3><p>Completes a neat 4-credit green/employability block with Project in Sustainability.</p></div>\n          </div>\n          <p class='source-link'><a href='https://ocnlondon.org.uk/app/uploads/files/units/na/M_650_1985.pdf'>Open exact OCN unit PDF</a></p>\n        "}, "game": {"title": "Computer Game Development", "meta": "D/617/4753 • Level 2 • 10 credits • 80 GLH • Future extension", "url": "https://ocnlondon.org.uk/app/uploads/files/units/na/D_617_4753.pdf", "body": "\n          <div class='modal-grid'>\n            <div><h3>What this unit is</h3><p>You learn how games are planned, built, tested and improved.</p></div>\n            <div><h3>How it will be delivered</h3><p>You create a game idea, design the rules/mechanics, build a prototype and test it.</p></div>\n            <div><h3>What you might make</h3><p>A small playable game or prototype.</p></div>\n            <div><h3>How evidence is captured</h3><p>Game plan, screenshots, prototype/demo, testing feedback and review.</p></div>\n            <div><h3>Where this can lead</h3><p>Highly engaging, but large. Better as a later specialist route rather than the first core pathway.</p></div>\n          </div>\n          <p class='source-link'><a href='https://ocnlondon.org.uk/app/uploads/files/units/na/D_617_4753.pdf'>Open exact OCN unit PDF</a></p>\n        "}, "ai": {"title": "Applying AI Tools in Learning and Work", "meta": "T/651/9013 • Level 2 • 3 credits • 30 GLH • Optional AI layer", "url": "https://www.ocnlondon.org.uk/portals/0/documents/NA_Units/T_651_9013.pdf", "body": "\n          <div class='modal-grid'>\n            <div><h3>What this unit is</h3><p>You learn how to use AI tools safely, responsibly and usefully.</p></div>\n            <div><h3>How it will be delivered</h3><p>You compare AI tools, choose a suitable tool for a task, check outputs and avoid sharing personal data.</p></div>\n            <div><h3>What you might make</h3><p>A supported project plan, explanation, image/design idea or documentation draft using AI responsibly.</p></div>\n            <div><h3>How evidence is captured</h3><p>Prompt examples, checked outputs, reflection on accuracy/safety and a practical task output.</p></div>\n            <div><h3>Where this can lead</h3><p>Can be added if the separate AI proposal does not proceed, or can sit alongside it as a practical support unit.</p></div>\n          </div>\n          <p class='source-link'><a href='https://www.ocnlondon.org.uk/portals/0/documents/NA_Units/T_651_9013.pdf'>Open exact OCN unit PDF</a></p>\n        "}};
+    const dialog = document.getElementById('unitDialog');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalBody = document.getElementById('modalBody');
+    const closeBtn = document.getElementById('closeDialog');
+    document.querySelectorAll('[data-unit]').forEach(button => { button.addEventListener('click', () => { const unit = units[button.dataset.unit]; modalTitle.textContent = unit.title; modalMeta.textContent = unit.meta; modalBody.innerHTML = unit.body; if (typeof dialog.showModal === 'function') dialog.showModal(); else window.location.href = unit.url; }); });
+    closeBtn.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => { const rect = dialog.getBoundingClientRect(); const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom; if(outside) dialog.close(); });
+    document.querySelectorAll('[data-view-btn]').forEach(btn => { btn.addEventListener('click', () => { const view = btn.dataset.viewBtn; document.body.dataset.view = view; document.querySelectorAll('[data-view-btn]').forEach(b => b.setAttribute('aria-pressed','false')); btn.setAttribute('aria-pressed','true'); }); });
+    const contrastBtn = document.getElementById('contrastBtn');
+    contrastBtn.addEventListener('click', () => { const high = document.body.dataset.theme !== 'high'; document.body.dataset.theme = high ? 'high' : 'normal'; contrastBtn.setAttribute('aria-pressed', high ? 'true' : 'false'); });
+  </script>
+</body>
+</html>
