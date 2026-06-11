@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="en" data-size="1" data-spacing="normal" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Practical Computing — Entry 3 &amp; Level 1 Course Guide</title>
+  <meta name="description" content="A plain-English guide to the Practical Computing course: Entry 3 and Level 1 OCN London accredited units, what you will do, and how your work is assessed. No exams." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+  <script>
+    /* Apply saved reading settings before first paint */
+    (function () {
+      try {
+        var s = JSON.parse(localStorage.getItem("pc-settings") || "{}");
+        var d = document.documentElement;
+        if (s.size) d.dataset.size = s.size;
+        if (s.spacing) d.dataset.spacing = s.spacing;
+        if (s.theme) d.dataset.theme = s.theme;
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    :root {
+      --bg: #faf5eb;
+      --card: #ffffff;
+      --card-soft: #fffdf7;
+      --ink: #26242e;
+      --muted: #555264;
+      --line: #e3dccd;
+      --focus: #4653c5;
+
+      --e3: #0b6e59;
+      --e3-strong: #095b4a;
+      --e3-soft: #e0f1ec;
+      --l1: #4350bd;
+      --l1-strong: #37429e;
+      --l1-soft: #e9ebfa;
+
+      --warm: #9a4d12;
+      --warm-soft: #faecdd;
+      --must-ink: #6e4a00;
+      --must-bg: #ffeec7;
+
+      --ok: #0b6e59;
+      --shadow: 0 4px 18px rgba(38, 36, 46, 0.08);
+      --radius: 16px;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, Verdana, sans-serif;
+    }
+
+    html[data-theme="dark"] {
+      --bg: #17161d;
+      --card: #211f2a;
+      --card-soft: #26242f;
+      --ink: #eceaf2;
+      --muted: #b6b2c2;
+      --line: #3a3747;
+      --focus: #a8b0ff;
+
+      --e3: #56c7ab;
+      --e3-strong: #79d6c0;
+      --e3-soft: #143830;
+      --l1: #9ba3f0;
+      --l1-strong: #b6bcf6;
+      --l1-soft: #242848;
+
+      --warm: #f0a868;
+      --warm-soft: #38291a;
+      --must-ink: #ffd78a;
+      --must-bg: #3a2f14;
+
+      --ok: #56c7ab;
+      --shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Text size steps */
+    html[data-size="1"] { font-size: 18px; }
+    html[data-size="2"] { font-size: 20px; }
+    html[data-size="3"] { font-size: 22px; }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+    @media (max-width: 700px) {
+      html { scroll-padding-top: 8rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    /* Wider spacing mode — based on British Dyslexia Association guidance */
+    html[data-spacing="wide"] body {
+      letter-spacing: 0.03em;
+      word-spacing: 0.12em;
+      line-height: 1.85;
+    }
+    html[data-spacing="wide"] p { margin-bottom: 1.4em; }
+
+    p, li { max-width: 70ch; }
+
+    a { color: var(--l1-strong); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+    a:hover { text-decoration-thickness: 3px; }
+
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 0 1.25rem; }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--ink);
+      color: var(--bg);
+      padding: 0.75rem 1.25rem;
+      z-index: 100;
+      border-radius: 0 0 10px 0;
+    }
+    .skip-link:focus { left: 0; }
+
+    .visually-hidden {
+      position: absolute !important;
+      width: 1px; height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    /* ---------- Reading settings bar ---------- */
+    .settings-bar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--card);
+      border-bottom: 2px solid var(--line);
+    }
+
+    .settings-inner {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem 1rem;
+      flex-wrap: wrap;
+      padding: 0.5rem 0;
+      font-size: 0.85rem;
+    }
+
+    .settings-label {
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .settings-group { display: inline-flex; gap: 0.35rem; align-items: center; }
+
+    .setting-btn {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+      background: var(--card-soft);
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      padding: 0.3rem 0.75rem;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .setting-btn:hover { border-color: var(--muted); }
+
+    .setting-btn[aria-pressed="true"] {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+
+    /* ---------- Header ---------- */
+    header.hero {
+      padding: 2.75rem 0 2.5rem;
+      border-bottom: 2px solid var(--line);
+      background:
+        linear-gradient(180deg, var(--card-soft), var(--bg));
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--warm);
+      background: var(--warm-soft);
+      border-radius: 999px;
+      padding: 0.3rem 0.85rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5.5vw, 3.1rem);
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.9rem;
+      max-width: 22ch;
+    }
+
+    .lede {
+      font-size: clamp(1.05rem, 2.2vw, 1.2rem);
+      color: var(--muted);
+      margin: 0 0 1.5rem;
+    }
+
+    .hero-buttons { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    .big-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 800;
+      font-size: 1rem;
+      text-decoration: none;
+      padding: 0.8rem 1.3rem;
+      border-radius: 12px;
+      border: 2px solid transparent;
+    }
+
+    .big-btn.e3 { background: var(--e3); color: #fff; }
+    .big-btn.l1 { background: var(--l1); color: #fff; }
+    html[data-theme="dark"] .big-btn.e3,
+    html[data-theme="dark"] .big-btn.l1 { color: #15141b; }
+    .big-btn.ghost {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line);
+    }
+    .big-btn:hover { filter: brightness(1.08); }
+
+    /* ---------- Quick facts ---------- */
+    .facts { border-bottom: 2px solid var(--line); background: var(--card); }
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .fact {
+      padding: 1rem 1rem 1.1rem;
+      border-right: 1px solid var(--line);
+      text-align: center;
+    }
+    .fact:last-child { border-right: 0; }
+    .fact .fact-icon { font-size: 1.5rem; display: block; margin-bottom: 0.2rem; }
+    .fact strong { display: block; font-size: 1.02rem; line-height: 1.3; }
+    .fact span { display: block; color: var(--muted); font-size: 0.85rem; margin-top: 0.15rem; }
+
+    /* ---------- Sections ---------- */
+    main { padding: 1rem 0 3.5rem; }
+    section { margin: 3rem 0; }
+
+    h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      letter-spacing: -0.015em;
+      line-height: 1.15;
+      margin: 0 0 0.5rem;
+    }
+
+    .section-sub { color: var(--muted); margin: 0 0 1.5rem; font-size: 1.02rem; }
+
+    /* ---------- Four steps ---------- */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.9rem;
+      counter-reset: step;
+    }
+
+    .step {
+      background: var(--card);
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .step .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.1rem; height: 2.1rem;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--bg);
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    .step h3 { margin: 0 0 0.35rem; font-size: 1.08rem; }
+    .step p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+    /* ---------- Level chooser ---------- */
+    .level-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .level-card {
+      border-radius: var(--radius);
+      border: 2px solid var(--line);
+      background: var(--card);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+      border-top: 8px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .level-card.e3 { border-top-color: var(--e3); }
+    .level-card.l1 { border-top-color: var(--l1); }
+
+    .level-tag {
+      align-self: flex-start;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.7rem;
+      border-radius: 999px;
+    }
+    .level-card.e3 .level-tag { background: var(--e3-soft); color: var(--e3-strong); }
+    .level-card.l1 .level-tag { background: var(--l1-soft); color: var(--l1-strong); }
+
+    .level-card h3 { margin: 0; font-size: 1.35rem; line-height: 1.2; }
+    .level-card p { margin: 0; color: var(--muted); }
+    .level-card .level-go { margin-top: auto; padding-top: 0.75rem; }
+
+    .helper-note {
+      margin-top: 1rem;
+      background: var(--card-soft);
+      border: 2px dashed var(--line);
+      border-radius: var(--radius);
+      padding: 0.9rem 1.1rem;
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    /* ---------- Course sections ---------- */
+    .course-head {
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 1.5rem 1.4rem;
+      color: #fff;
+    }
+    html[data-theme="dark"] .course-head { color: #15141b; }
+    .course-head.e3 { background: var(--e3); }
+    .course-head.l1 { background: var(--l1); }
+
+    .course-head h2 { margin: 0 0 0.4rem; color: inherit; }
+    .course-head p { margin: 0; opacity: 0.92; max-width: 62ch; }
+
+    .course-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .meta-chip {
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 999px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+    html[data-theme="dark"] .meta-chip {
+      background: rgba(0, 0, 0, 0.12);
+      border-color: rgba(0, 0, 0, 0.25);
+    }
+
+    .course-body {
+      border: 2px solid var(--line);
+      border-top: 0;
+      border-radius: 0 0 var(--radius) var(--radius);
+      background: var(--card-soft);
+      padding: 1.25rem 1.4rem 1.5rem;
+    }
+
+    /* Progress */
+    .progress-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.1rem;
+    }
+
+    .progress-track {
+      flex: 1 1 220px;
+      height: 14px;
+      border-radius: 999px;
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+    #e3 .progress-fill { background: var(--e3); }
+    #l1 .progress-fill { background: var(--l1); }
+
+    .progress-text { font-weight: 700; font-size: 0.95rem; color: var(--muted); }
+
+    .bulk-buttons { display: flex; gap: 0.5rem; }
+
+    .mini-btn {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: var(--card);
+      color: var(--ink);
+      border: 2px solid var(--line);
+      border-radius: 999px;
+      padding: 0.35rem 0.85rem;
+      cursor: pointer;
+    }
+    .mini-btn:hover { border-color: var(--muted); }
+
+    /* ---------- Unit cards ---------- */
+    .unit {
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      margin-bottom: 0.9rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .unit summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1.05rem 1.2rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .unit summary::-webkit-details-marker { display: none; }
+    .unit summary:hover { background: var(--card-soft); }
+
+    .unit-emoji {
+      flex: 0 0 auto;
+      font-size: 1.7rem;
+      width: 2.9rem; height: 2.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+    }
+    #e3 .unit-emoji { background: var(--e3-soft); }
+    #l1 .unit-emoji { background: var(--l1-soft); }
+
+    .unit-heading { flex: 1 1 auto; min-width: 0; }
+
+    .unit-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+
+    .unit-name {
+      display: block;
+      font-size: 1.13rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin: 0.1rem 0;
+    }
+
+    .unit-meta { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.3rem; }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 0.18rem 0.6rem;
+      border: 1.5px solid var(--line);
+      color: var(--muted);
+      background: var(--card-soft);
+      white-space: nowrap;
+    }
+
+    .badge.must { background: var(--must-bg); color: var(--must-ink); border-color: transparent; }
+
+    .chev {
+      flex: 0 0 auto;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--muted);
+      transition: transform 0.2s ease;
+    }
+    .unit[open] .chev { transform: rotate(180deg); }
+
+    .unit-body { padding: 0 1.2rem 1.2rem; border-top: 2px solid var(--line); }
+    .unit-body > p.unit-intro { margin: 1rem 0; }
+
+    .unit-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .unit-col {
+      background: var(--card-soft);
+      border: 1.5px solid var(--line);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+    }
+
+    .unit-col h4 {
+      margin: 0 0 0.5rem;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+
+    .unit-col ul { margin: 0; padding: 0 0 0 1.2rem; }
+    .unit-col li { margin-bottom: 0.35rem; font-size: 0.96rem; }
+    .unit-col li:last-child { margin-bottom: 0; }
+
+    .done-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .done {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--card-soft);
+      border: 2px solid var(--line);
+      border-radius: 12px;
+      padding: 0.6rem 0.9rem;
+    }
+
+    .done input {
+      width: 1.35rem; height: 1.35rem;
+      accent-color: var(--ok);
+      cursor: pointer;
+    }
+
+    .done:has(input:checked) { border-color: var(--ok); }
+
+    .unit-code { font-size: 0.8rem; color: var(--muted); margin: 0; }
+
+    /* ---------- Evidence section ---------- */
+    .evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.9rem;
+    }
+
+    .evidence-card {
+      background: var(--card);
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1rem 1.1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .evidence-card .ev-icon { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+    .evidence-card h3 { margin: 0 0 0.3rem; font-size: 1.02rem; }
+    .evidence-card p { margin: 0; color: var(--muted); font-size: 0.93rem; }
+
+    .reassure {
+      margin-top: 1.25rem;
+      background: var(--e3-soft);
+      border: 2px solid var(--e3);
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+      font-size: 1rem;
+    }
+    .reassure strong { color: var(--e3-strong); }
+
+    /* ---------- Official info ---------- */
+    .official-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .official-card {
+      background: var(--card);
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      box-shadow: var(--shadow);
+    }
+
+    .official-card h3 { margin: 0 0 0.4rem; font-size: 1.15rem; }
+    .official-card .qual-code { font-size: 0.85rem; color: var(--muted); margin: 0 0 0.8rem; }
+    .official-card p { color: var(--muted); margin: 0 0 1rem; font-size: 0.96rem; }
+
+    .official-card .big-btn { font-size: 0.92rem; padding: 0.65rem 1.05rem; }
+
+    .new-tab-note { font-size: 0.85rem; color: var(--muted); margin-top: 1rem; }
+
+    /* ---------- Outcomes ---------- */
+    .outcomes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
+
+    .outcome {
+      background: var(--card);
+      border: 2px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.1rem;
+      box-shadow: var(--shadow);
+    }
+    .outcome .ev-icon { font-size: 1.6rem; display: block; margin-bottom: 0.35rem; }
+    .outcome h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+    .outcome p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+    /* ---------- Footer ---------- */
+    footer {
+      border-top: 2px solid var(--line);
+      background: var(--card);
+      padding: 2rem 0 2.5rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    footer strong { color: var(--ink); }
+    footer p { margin: 0.4rem 0; }
+
+    .top-link { display: inline-block; margin-top: 0.8rem; font-weight: 700; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      .facts-grid { grid-template-columns: 1fr 1fr; }
+      .fact { border-bottom: 1px solid var(--line); }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .evidence-grid, .outcomes { grid-template-columns: 1fr 1fr; }
+      .level-cards, .official-grid, .unit-cols { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 540px) {
+      .facts-grid, .steps, .evidence-grid, .outcomes { grid-template-columns: 1fr; }
+      .fact { border-right: 0; text-align: left; }
+      .unit summary { flex-wrap: wrap; }
+      .settings-inner { font-size: 0.8rem; }
+    }
+
+    @media print {
+      .settings-bar, .bulk-buttons, .done-row, .hero-buttons { display: none; }
+      .unit { break-inside: avoid; }
+      details.unit { border: 1px solid #999; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Reading settings -->
+  <div class="settings-bar" role="region" aria-label="Reading settings">
+    <div class="wrap settings-inner">
+      <span class="settings-label" id="settings-label">Reading settings:</span>
+
+      <span class="settings-group" role="group" aria-label="Text size">
+        <button type="button" class="setting-btn" data-size-btn="1" aria-pressed="true">A <span class="visually-hidden">standard text size</span></button>
+        <button type="button" class="setting-btn" data-size-btn="2" aria-pressed="false">A+ <span class="visually-hidden">large text size</span></button>
+        <button type="button" class="setting-btn" data-size-btn="3" aria-pressed="false">A++ <span class="visually-hidden">largest text size</span></button>
+      </span>
+
+      <span class="settings-group">
+        <button type="button" class="setting-btn" id="spacing-btn" aria-pressed="false">More letter spacing</button>
+        <button type="button" class="setting-btn" id="theme-btn" aria-pressed="false">Dark colours</button>
+      </span>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Young Lewisham Project · Course Guide</span>
+      <h1>Practical Computing</h1>
+      <p class="lede">
+        A hands-on computing course where you build, test and fix real things —
+        games, websites, micro:bit gadgets and robot ideas.
+        There are <strong>no exams</strong>. You show what you can do, and that becomes your evidence.
+      </p>
+      <div class="hero-buttons">
+        <a class="big-btn e3" href="#e3">🌱 Entry 3 units</a>
+        <a class="big-btn l1" href="#l1">🚀 Level 1 units</a>
+        <a class="big-btn ghost" href="#evidence">How am I assessed?</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="facts" role="region" aria-label="Quick facts about the course">
+    <div class="wrap facts-grid">
+      <div class="fact">
+        <span class="fact-icon" aria-hidden="true">📋</span>
+        <strong>No exams</strong>
+        <span>Evidence comes from what you make and do</span>
+      </div>
+      <div class="fact">
+        <span class="fact-icon" aria-hidden="true">🏅</span>
+        <strong>Real qualifications</strong>
+        <span>Accredited by OCN London, regulated by Ofqual</span>
+      </div>
+      <div class="fact">
+        <span class="fact-icon" aria-hidden="true">🛠️</span>
+        <strong>Workshop sessions</strong>
+        <span>You learn by building, not by listening</span>
+      </div>
+      <div class="fact">
+        <span class="fact-icon" aria-hidden="true">🤝</span>
+        <strong>Support available</strong>
+        <span>Spoken answers and a scribe can be used</span>
+      </div>
+    </div>
+  </div>
+
+  <main id="main" class="wrap">
+
+    <!-- How sessions work -->
+    <section id="how-it-works" aria-labelledby="how-title">
+      <h2 id="how-title">Every session follows the same four steps</h2>
+      <p class="section-sub">You always know what is coming next. Each workshop uses this routine.</p>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-num" aria-hidden="true">1</span>
+          <h3>See it</h3>
+          <p>The session starts with a real challenge you can see — a broken setup, a game menu, a sensor, a robot idea.</p>
+        </div>
+        <div class="step">
+          <span class="step-num" aria-hidden="true">2</span>
+          <h3>Build it</h3>
+          <p>You work hands-on with devices, micro:bits, websites, code blocks or design sketches.</p>
+        </div>
+        <div class="step">
+          <span class="step-num" aria-hidden="true">3</span>
+          <h3>Test it</h3>
+          <p>Try it out. If it breaks, that is part of the plan — fixing things is a skill this course teaches.</p>
+        </div>
+        <div class="step">
+          <span class="step-num" aria-hidden="true">4</span>
+          <h3>Show it</h3>
+          <p>Photos, screenshots, short answers or just showing your tutor. That becomes your assessment evidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Level chooser -->
+    <section id="levels" aria-labelledby="levels-title">
+      <h2 id="levels-title">Two levels, one path</h2>
+      <p class="section-sub">The course has two levels. Each one is a separate qualification.</p>
+
+      <div class="level-cards">
+        <div class="level-card e3">
+          <span class="level-tag">Entry 3 · Start here</span>
+          <h3>Digital confidence</h3>
+          <p>Get safe, confident and independent with computers: setting up devices, staying safe online, managing files, exploring smart technology and designing app screens.</p>
+          <p><strong>5 units · 19 credits</strong></p>
+          <span class="level-go"><a class="big-btn e3" href="#e3">🌱 See the Entry 3 units</a></span>
+        </div>
+        <div class="level-card l1">
+          <span class="level-tag">Level 1 · The next step</span>
+          <h3>Digital making</h3>
+          <p>Move from using technology to making it: coding your own programs, designing robots, planning smart-device systems and learning to debug problems.</p>
+          <p><strong>6 units · 19 credits</strong></p>
+          <span class="level-go"><a class="big-btn l1" href="#l1">🚀 See the Level 1 units</a></span>
+        </div>
+      </div>
+
+      <p class="helper-note">
+        💬 <strong>Not sure which level you are on?</strong> That is fine — your tutor will tell you.
+        You do not need to choose anything on this page.
+      </p>
+    </section>
+
+    <!-- ============ ENTRY 3 ============ -->
+    <section id="e3" aria-labelledby="e3-title" data-level="e3">
+      <div class="course-head e3">
+        <h2 id="e3-title">Entry 3 · Digital Confidence</h2>
+        <p>Five units. Tap or click a unit to see what you will do in it. Units marked <strong>“must do”</strong> are required by the qualification.</p>
+        <div class="course-meta">
+          <span class="meta-chip">5 units</span>
+          <span class="meta-chip">19 credits</span>
+          <span class="meta-chip">About 190 learning hours</span>
+          <span class="meta-chip">No exams</span>
+        </div>
+      </div>
+
+      <div class="course-body">
+        <div class="progress-row">
+          <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+          <span class="progress-text" role="status">0 of 5 units marked done</span>
+          <span class="bulk-buttons">
+            <button type="button" class="mini-btn" data-expand="e3">Open all</button>
+            <button type="button" class="mini-btn" data-collapse="e3">Close all</button>
+          </span>
+        </div>
+
+        <details class="unit" id="e3-u1">
+          <summary>
+            <span class="unit-emoji" aria-hidden="true">🛡️</span>
+            <span class="unit-heading">
+              <span class="unit-label">Unit 1 of 5</span>
+              <span class="unit-name">Digital Safety and Security</span>
+              <span class="unit-meta">
+                <span class="badge must">Must do</span>
+                <span class="badge">3 credits</span>
+                <span class="badge">≈ 30 hours</span>
+              </span>
+            </span>
+            <span class="chev" aria-hidden="true">▼</span>
+          </summary>
+          <div class="unit-body">
+            <p class="unit-intro">
+              This unit keeps you safe for the whole course. You learn how to protect yourself and
+              others online, how to report problems, and how to keep your accounts and files secure.
+            </p>
+            <div class="unit-cols">
+              <div class="unit-col">
+                <h4>You will learn to</h4>
+                <ul>
+                  <li>Keep your personal information private online</li>
+                  <li>Spot problems worth reporting, and know who to tell</li>
+                  <li>Use strong passwords, screen locks and fingerprint or face unlock</li>
+                  <li>Check browser safety settings and site permissions</li>
+                  <li>Back up your files and keep devices updated</li>
+                  <li>Follow the centre's rules for safe online working</li>
+                </ul>
+              </div>
+              <div class="unit-col">
+                <h4>Your evidence can be</h4>
+                <ul>
+                  <li>Short written or ticked answers in your workbook</li>
+                  <li>Showing your tutor a privacy or security setting</li>
+                  <li>Screenshots (with personal details hidden)</li>
+                  <li>Spoken answers your tutor writes down</li>
+                </ul>
+              </div>
+            </div>
+            <div class="done-row">
+              <label class="done"><input type="checkbox" data-unit="e3-u1" /> I have finished this unit</label>
+              <p class="unit-code">Official unit code: Y/616/8241</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="unit" id="e3-u2">
+          <summary>
+            <span class="unit-emoji" aria-hidden="true">🔌</span>
+            <span class="unit-heading">
+              <span class="unit-label">Unit 2 of 5</span>
+              <span class="unit-name">Set Up and Maintain a Digital System</span>
+              <span class="unit-meta">
+                <span class="badge">3 credits</span>
+                <span class="badge">≈ 30 hours</span>
+              </span>
+            </span>
+            <span class="chev" aria-hidden="true">▼</span>
+          </summary>
+          <div class="unit-body">
+            <p class="unit-intro">
+              The hands-on setup unit. You build a working computer station from parts —
+              cables, screen, keyboard, network — then keep it organised and backed up.
+            </p>
+            <div class="unit-cols">
+              <div class="unit-col">
+                <h4>You will learn to</h4>
+                <ul>
+                  <li>Connect a computer, printer and other devices using instructions</li>
+                  <li>Use USB sticks and memory cards safely</li>
+                  <li>Follow health and safety guidance while setting up</li>
+                  <li>Change a setting in the user interface to suit you</li>
+                  <li>Know how to keep a computer updated and protected</li>
+                  <li>Organise folders, then back up and restore your files</li>
+                </ul>
+              </div>
+              <div class="unit-col">
+                <h4>Your evidence can be</h4>
+                <ul>
+                  <li>Photos of your setup work</li>
+                  <li>A screenshot of the setting you changed</li>
+                  <li>The folder structure you created</li>
+                  <li>Showing your tutor a backup and restore</li>
+                </ul>
+              </div>
+            </div>
+            <div class="done-row">
+              <label class="done"><input type="checkbox" data-unit="e3-u2" /> I have finished this unit</label>
+              <p class="unit-code">Official unit code: A/616/8247</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="unit" id="e3-u3">
+          <summary>
+            <span class="unit-emoji" aria-hidden="true">💻</span>
+            <span class="unit-heading">
+              <span class="unit-label">Unit 3 of 5</span>
+              <span class="unit-name">IT User Fundamentals</span>
+              <span class="unit-meta">
+                <span class="badge">2 credits</span>
+                <span class="badge">≈ 20 hours</span>
+              </span>
+            </span>
+            <span class="chev" aria-hidden="true">▼</span>
+          </summary>
+          <div class="unit-body">
+            <p class="unit-intro">
+              Everyday computer confidence. You practise the routines that make you independent:
+              logging in, finding files, fixing small problems, and knowing when to ask for help.
+            </p>
+            <div class="unit-cols">
+              <div class="unit-col">
+                <h4>You will learn to</h4>
+                <ul>
+                  <li>Start up, log in and shut down a computer the right way</li>
+                  <li>Use menus, search and settings to get things done</li>
+                  <li>Use the correct words when talking about IT</li>
+                  <li>Organise files and folders so nothing gets lost</li>
+                  <li>Deal with common problems — no sound, no Wi-Fi, missing files</li>
+                  <li>Know where to get expert help when you need it</li>
+                </ul>
+              </div>
+              <div class="unit-col">
+                <h4>Your evidence can be</h4>
+                <ul>
+                  <li>Your tutor watching you use the computer correctly</li>
+                  <li>A “find the missing file” challenge completed</li>
+                  <li>Short answers explaining your choices</li>
+                  <li>Spoken question-and-answer notes</li>
+                </ul>
+              </div>
+            </div>
+            <div class="done-row">
+              <label class="done"><input type="checkbox" data-unit="e3-u3" /> I have finished this unit</label>
+              <p class="unit-code">Official unit code: K/505/3214</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="unit" id="e3-u4">
+          <summary>
+            <span class="unit-emoji" aria-hidden="true">🌐</span>
+            <span class="unit-heading">
+              <span class="unit-label">Unit 4 of 5</span>
+              <span class="unit-name">Emerging Technologies and the Internet of Things</span>
+              <span class="unit-meta">
+                <span class="badge">5 credits</span>
+                <span class="badge">≈ 50 hours</span>
+              </span>
+            </span>
+            <span class="chev" aria-hidden="true">▼</span>
+          </summary>
+          <div class="unit-body">
+            <p class="unit-intro">
+              Explore the technology that is changing the world — AI, virtual reality, wearables,
+              robots — then design your own “smart device” idea that connects things together.
+            </p>
+            <div class="unit-cols">
+              <div class="unit-col">
+                <h4>You will learn to</h4>
+                <ul>
+                  <li>Explain what “emerging technology” means, with examples</li>
+                  <li>Give a benefit and a downside of a new technology</li>
+                  <li>Explain the Internet of Things — objects that connect and share data</li>
+                  <li>Pick a real smart product and say how it helps people</li>
+                  <li>Design your own connected-device idea</li>
+                  <li>Get feedback from someone and improve your idea</li>
+                </ul>
+              </div>
+              <div class="unit-col">
+                <h4>Your evidence can be</h4>
+                <ul>
+                  <li>A drawing or diagram of your connected idea</li>
+                  <li>Written or spoken answers</li>
+                  <li>Notes from the feedback you collected</li>
+                  <li>Your improved plan</li>
+                </ul>
+              </div>
+            </div>
+            <div class="done-row">
+              <label class="done"><input type="checkbox" data-unit="e3-u4" /> I have finished this unit</label>
+              <p class="unit-code">Official unit code: L/617/9009</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="unit" id="e3-u5">
+          <summary>
+            <span class="unit-emoji" aria-hidden="true">🎨</span>
+            <span class="unit-heading">
+              <span class="unit-label">Unit 5 of 5</span>
+              <span class="unit-name">Introduction to UI and UX Design</span>
+              <span class="unit-meta">
+                <span class="badge">6 credits</span>
+                <span class="badge">≈ 60 hours</span>
+              </span>
+            </span>
+            <span class="chev" aria-hidden="true">▼</span>
+          </summary>
+          <div class="unit-body">
+            <p class="unit-intro">
+              The creative unit. UI means the buttons, menus and screens you interact with.
+              UX means how it feels to use them. You become a design critic — then a designer.
+            </p>
+            <div class="unit-cols">
+              <div class="unit-col">
+                <h4>You will learn to</h4>
+                <ul>
+                  <li>Explain what a user interface (UI) is</li>
+                  <li>Use a design principle to review a real app, game menu or website</li>
+                  <li>Suggest an improvement based on your review</li>
+                  <li>Explain what user experience (UX) means</li>
+                  <li>Use UX principles to suggest improvements to a second interface</li>
+                  <li>Sketch or build your own improved screen design</li>
+                </ul>
+              </div>
+              <div class="unit-col">
+                <h4>Your evidence can be</h4>
+                <ul>
+                  <li>Screenshots or drawings of the interfaces you reviewed</li>
+                  <li>Your written or spoken review</li>
+                  <li>A sketch, wireframe or simple webpage you made</li>
+                  <li>Comments from someone who tested your design</li>
+                </ul>
+              </div>
+            </div>
+            <div class="done-row">
+              <label class="done"><input type="checkbox" data-unit="e3-u5" /> I have finished this unit</label>
+              <p class="unit-code">Official unit code: F/617/9010</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- ============ LEVEL 1 ============ -->
+    <section id="l1" aria-labelledby="l1-title" data-level="l1">
+      <div class="course-head l1">
+        <h2 id="l1-title">Level 1 · Digital Making</h2>
+        <p>Six units. Tap or click a unit to see what you will do in it. Units marked <strong>“must do”</strong> are required by the qualification.</p>
+        <div class="course-meta">
+          <span class="meta-chip">6 units</span>
+          <span class="meta-chip">19 credits</span>
+          <span class="meta-chip">About 168 learning hours</span>
+          <span class="meta-chip">No exams</span>
+        </div>
+      </div>
+
+      <div class="course-body">
+        <div class="progress-row">
+          <div class="progress-track" aria-hidden="true"><div class="progress-fill"></div></div>
+          <span class="progress-text" role="status">0 of 6 units marked done</span>
+          <span class="bulk-buttons">
+            <button type="button" class="mini-btn" data-expand="l1">Open all</button>
+            <button type="button" class="mini-btn" data-collapse="l1">Close all</button>
+          </span>
+        </div>
+
+        <details class="unit" id="l1-u1">
+          <summary>
+            <span class="unit-emoji" aria-hidden="true">📓</span>
+            <span class="unit-heading">
+              <span class="unit-label">Unit 1 of 6</span>
+              <span class="unit-name">Introduction to Study Skills</span>
+              <span class="unit-meta">
+                <span class="badge must">Must do</span>
+                <span class="badge">3 credits</span>
+                <span class="badge">≈ 27 hours</span>
+              </span>
+            </span>
+            <span class="chev" aria-hidden="true">▼</span>
+          </summary>
+          <div class="unit-body">
+            <p class="unit-intro">
+              Not school study skills — this is “how to run your own tech project”.
+              You pick a project theme (a game, robot, smart device or design) and learn to manage it.
+            </p>
+            <div class="unit-cols">
+              <div class="unit-col">
+                <h4>You will learn to</h4>
+                <ul>
+                  <li>Work out how you learn best</li>
+                  <li>See the benefits of getting involved and working with others</li>
+                  <li>Find information and store it where you can get it back</li>
+                  <li>Make notes in two different ways — photos, checklists, mind maps</li>
+                  <li>Make an action plan and use it to structure your work</li>
+                  <li>Use feedback to make one clear improvement</li>
+                </ul>
+              </div>
+              <div class="unit-col">
+                <h4>Your evidence can be</h4>
+                <ul>
+                  <li>Your project notebook or evidence folder</li>
+                  <li>Two kinds of notes you made</li>
+                  <li>Your action plan</li>
+                  <li>A before-and-after showing the improvement you made</li>
+                </ul>
+              </div>
+            </div>
+            <div class="done-row">
+              <label class="done"><input type="checkbox" data-unit="l1-u1" /> I have finished this unit</label>
+              <p class="unit-code">Official unit code: H/508/0637</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="unit" id="l1-u2">
+          <summary>
+            <span class="unit-emoji" aria-hidden="true">⏱️</span>
+            <span class="unit-heading">
+              <span class="unit-label">Unit 2 of 6</span>
+              <span class="unit-name">Time Management Skills</span>
+              <span class="unit-meta">
+                <span class="badge must">Must do</span>
+                <span class="badge">2 credits</span>
+                <span class="badge">≈ 18 hours</span>
+              </span>
+            </span>
+            <span class="chev" aria-hidden="true">▼</span>
+          </summary>
+          <div class="unit-body">
+            <p class="unit-intro">
+              Builds and projects take time. This unit gives you simple tools — timers, task boards,
+              checklists — so your project gets finished instead of forgotten.
+            </p>
+            <div class="unit-cols">
+              <div class="unit-col">
+                <h4>You will learn to</h4>
+                <ul>
+                  <li>Say why good time management helps you</li>
+                  <li>Spot what goes wrong when time is not managed</li>
+                  <li>Pick a technique that works for you</li>
+                  <li>Break a build into small tasks: set up, code, test, fix</li>
+                  <li>Make a time plan and actually follow it</li>
+                  <li>Review what went well and what to change next time</li>
+                </ul>
+              </div>
+              <div class="unit-col">
+                <h4>Your evidence can be</h4>
+                <ul>
+                  <li>Your own time-management plan</li>
+                  <li>A completed task board or session checklist</li>
+                  <li>Written or spoken answers about what worked</li>
+                  <li>Your review of what to improve</li>
+                </ul>
+              </div>
+            </div>
+            <div class="done-row">
+              <label class="done"><input type="checkbox" data-unit="l1-u2" /> I have finished this unit</label>
+              <p class="unit-code">Official unit code: K/508/0638</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="unit" id="l1-u3">
+          <summary>
+            <span class="unit-emoji" aria-hidden="true">👾</span>
+            <span class="unit-heading">
+              <span class="unit-label">Unit 3 of 6</span>
+              <span class="unit-name">Introduction to Programming</span>
+              <span class="unit-meta">
+                <span class="badge">3 credits</span>
+                <span class="badge">≈ 27 hours</span>
+              </span>
+            </span>
+            <span class="chev" aria-hidden="true">▼</span>
+          </summary>
+          <div class="unit-body">
+            <p class="unit-intro">
+              The coding unit. You plan, build and debug your own program — a micro:bit reaction game,
+              an LED dice, a sensor alert, a score counter, or your own idea. You can use MakeCode,
+              Scratch or Python.
+            </p>
+            <div class="unit-cols">
+              <div class="unit-col">
+                <h4>You will learn to</h4>
+                <ul>
+                  <li>Use variables and lists to store information</li>
+                  <li>Put steps in order (sequence)</li>
+                  <li>Make code repeat (loops)</li>
+                  <li>Use AND, OR and NOT — like “button A AND shake”</li>
+                  <li>Make the program choose — “if the score is over 5, you win”</li>
+                  <li>Plan a program from a brief, then find and fix its bugs</li>
+                </ul>
+              </div>
+              <div class="unit-col">
+                <h4>Your evidence can be</h4>
+                <ul>
+                  <li>Screenshots or printouts of your code</li>
+                  <li>Showing your tutor the program working</li>
+                  <li>Your plan: input → rule → output</li>
+                  <li>Your debugging log — what broke and how you fixed it</li>
+                </ul>
+              </div>
+            </div>
+            <div class="done-row">
+              <label class="done"><input type="checkbox" data-unit="l1-u3" /> I have finished this unit</label>
+              <p class="unit-code">Official unit code: K/616/8258</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="unit" id="l1-u4">
+          <summary>
+            <span class="unit-emoji" aria-hidden="true">🤖</span>
+            <span class="unit-heading">
+              <span class="unit-label">Unit 4 of 6</span>
+              <span class="unit-name">Introduction to Robotics</span>
+              <span class="unit-meta">
+                <span class="badge">3 credits</span>
+                <span class="badge">≈ 27 hours</span>
+              </span>
+            </span>
+            <span class="chev" aria-hidden="true">▼</span>
+          </summary>
+          <div class="unit-body">
+            <p class="unit-intro">
+              Robots already work in hospitals, warehouses and homes. In this unit you study how —
+              then design your own robot to solve a real problem.
+            </p>
+            <div class="unit-cols">
+              <div class="unit-col">
+                <h4>You will learn to</h4>
+                <ul>
+                  <li>Describe how robots are used in at least two industries</li>
+                  <li>Give a benefit and a concern about robots taking on work</li>
+                  <li>Pick a job or process a robot could do</li>
+                  <li>Plan your robot: what it looks like, what it does, how it works</li>
+                  <li>Check your design against what it was meant to do</li>
+                  <li>Recommend one improvement to make it better</li>
+                </ul>
+              </div>
+              <div class="unit-col">
+                <h4>Your evidence can be</h4>
+                <ul>
+                  <li>Your industry examples, written or spoken</li>
+                  <li>Your robot design plan and sketches</li>
+                  <li>A model, micro:bit demo or simulation if available</li>
+                  <li>Your review and improvement idea</li>
+                </ul>
+              </div>
+            </div>
+            <div class="done-row">
+              <label class="done"><input type="checkbox" data-unit="l1-u4" /> I have finished this unit</label>
+              <p class="unit-code">Official unit code: L/617/4778</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="unit" id="l1-u5">
+          <summary>
+            <span class="unit-emoji" aria-hidden="true">📡</span>
+            <span class="unit-heading">
+              <span class="unit-label">Unit 5 of 6</span>
+              <span class="unit-name">Emerging Technologies and the Internet of Things</span>
+              <span class="unit-meta">
+                <span class="badge">5 credits</span>
+                <span class="badge">≈ 45 hours</span>
+              </span>
+            </span>
+            <span class="chev" aria-hidden="true">▼</span>
+          </summary>
+          <div class="unit-body">
+            <p class="unit-intro">
+              The big project unit. You go deeper into new technology — 3D printing, AR, VR, AI,
+              wearables, robotics, biotechnology — then plan a complete connected-device system
+              and improve it using real feedback.
+            </p>
+            <div class="unit-cols">
+              <div class="unit-col">
+                <h4>You will learn to</h4>
+                <ul>
+                  <li>Explain seven emerging technologies and what they do</li>
+                  <li>Give benefits and negative impacts of at least two of them</li>
+                  <li>Explain how Internet of Things products connect and why</li>
+                  <li>Describe the technical connections of one real smart product</li>
+                  <li>Plan your own connected system, step by step, with a clear benefit</li>
+                  <li>Ask others for feedback and build one improvement into your plan</li>
+                </ul>
+              </div>
+              <div class="unit-col">
+                <h4>Your evidence can be</h4>
+                <ul>
+                  <li>Your technology fact-file or comparison notes</li>
+                  <li>A diagram mapping sensor → device → network → action</li>
+                  <li>Your step-by-step system plan</li>
+                  <li>Feedback notes and your updated plan</li>
+                </ul>
+              </div>
+            </div>
+            <div class="done-row">
+              <label class="done"><input type="checkbox" data-unit="l1-u5" /> I have finished this unit</label>
+              <p class="unit-code">Official unit code: J/617/4777</p>
+            </div>
+          </div>
+        </details>
+
+        <details class="unit" id="l1-u6">
+          <summary>
+            <span class="unit-emoji" aria-hidden="true">🔧</span>
+            <span class="unit-heading">
+              <span class="unit-label">Unit 6 of 6</span>
+              <span class="unit-name">Problem Solving Skills</span>
+              <span class="unit-meta">
+                <span class="badge">3 credits</span>
+                <span class="badge">≈ 24 hours</span>
+              </span>
+            </span>
+            <span class="chev" aria-hidden="true">▼</span>
+          </summary>
+          <div class="unit-body">
+            <p class="unit-intro">
+              The debugging unit. Things break in every project — a program, a sensor, a webpage.
+              This unit turns “it's broken” into a process you can follow calmly.
+            </p>
+            <div class="unit-cols">
+              <div class="unit-col">
+                <h4>You will learn to</h4>
+                <ul>
+                  <li>Work out what affects which fix you should choose</li>
+                  <li>Describe more than one possible fix, with pros and cons</li>
+                  <li>Spot the limits of each option</li>
+                  <li>Use evidence — error messages, test results, photos</li>
+                  <li>Choose the best fix and try it</li>
+                  <li>Check whether it worked, and revise the plan if not</li>
+                </ul>
+              </div>
+              <div class="unit-col">
+                <h4>Your evidence can be</h4>
+                <ul>
+                  <li>Your problem statement and list of options</li>
+                  <li>The evidence you collected while testing</li>
+                  <li>Notes on the fix you chose and why</li>
+                  <li>Your review and revised plan</li>
+                </ul>
+              </div>
+            </div>
+            <div class="done-row">
+              <label class="done"><input type="checkbox" data-unit="l1-u6" /> I have finished this unit</label>
+              <p class="unit-code">Official unit code: J/508/0694</p>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Evidence / assessment -->
+    <section id="evidence" aria-labelledby="evidence-title">
+      <h2 id="evidence-title">How you are assessed — no exams</h2>
+      <p class="section-sub">
+        There is no exam hall and no test paper. Your tutor collects evidence of what you can do,
+        bit by bit, during normal sessions. Any of these count:
+      </p>
+
+      <div class="evidence-grid">
+        <div class="evidence-card">
+          <span class="ev-icon" aria-hidden="true">📸</span>
+          <h3>Photos &amp; screenshots</h3>
+          <p>A photo of your setup or a screenshot of your code is real evidence.</p>
+        </div>
+        <div class="evidence-card">
+          <span class="ev-icon" aria-hidden="true">🗣️</span>
+          <h3>Spoken answers</h3>
+          <p>You can answer out loud. Your tutor writes it down — that counts the same as writing it yourself.</p>
+        </div>
+        <div class="evidence-card">
+          <span class="ev-icon" aria-hidden="true">👀</span>
+          <h3>Being observed</h3>
+          <p>Your tutor watching you do something correctly is evidence on its own.</p>
+        </div>
+        <div class="evidence-card">
+          <span class="ev-icon" aria-hidden="true">✍️</span>
+          <h3>Short written answers</h3>
+          <p>Workbook questions are short — ticking boxes, ordering steps, a sentence or two.</p>
+        </div>
+        <div class="evidence-card">
+          <span class="ev-icon" aria-hidden="true">🎮</span>
+          <h3>Demonstrations</h3>
+          <p>Showing your game, program or design working is some of the strongest evidence there is.</p>
+        </div>
+        <div class="evidence-card">
+          <span class="ev-icon" aria-hidden="true">🧑‍🤝‍🧑</span>
+          <h3>Feedback from others</h3>
+          <p>Notes from a classmate testing your design count towards several units.</p>
+        </div>
+      </div>
+
+      <div class="reassure">
+        <strong>Extra support is built in.</strong> If writing is hard, you can use spoken answers and a scribe
+        (someone who writes for you). Every workbook has space for this — it is a normal part of the course,
+        not a special exception.
+      </div>
+    </section>
+
+    <!-- Outcomes -->
+    <section id="outcomes" aria-labelledby="outcomes-title">
+      <h2 id="outcomes-title">What you leave with</h2>
+      <p class="section-sub">More than a certificate — though you get that too.</p>
+
+      <div class="outcomes">
+        <div class="outcome">
+          <span class="ev-icon" aria-hidden="true">🏅</span>
+          <h3>A real qualification</h3>
+          <p>Nationally recognised OCN London certificates, regulated by Ofqual — the same regulator that oversees GCSEs.</p>
+        </div>
+        <div class="outcome">
+          <span class="ev-icon" aria-hidden="true">📁</span>
+          <h3>A portfolio of things you made</h3>
+          <p>Programs, designs, plans and builds you can show to colleges, employers or family.</p>
+        </div>
+        <div class="outcome">
+          <span class="ev-icon" aria-hidden="true">💪</span>
+          <h3>Confidence with technology</h3>
+          <p>You can set up, fix, code, design and explain — skills that make every next step easier.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Official information -->
+    <section id="official" aria-labelledby="official-title">
+      <h2 id="official-title">Official course information</h2>
+      <p class="section-sub">
+        These qualifications are accredited by <strong>OCN London</strong>, an Ofqual-regulated awarding body.
+        The official pages below have the formal details for parents, carers, tutors and referrers.
+      </p>
+
+      <div class="official-grid">
+        <div class="official-card">
+          <h3>Entry 3 qualification</h3>
+          <p class="qual-code">OCNLR Entry Level Certificate in Digital Skills (Entry 3)<br />Qualification number: 603/2846/0</p>
+          <p>Requires a minimum of 15 credits including the Digital Safety and Security unit. Our route covers 19 credits, so there is room to learn at a comfortable pace.</p>
+          <a class="big-btn e3" href="https://ocnlondon.org.uk/qualifications/digital-comp/e3-cert-digital-skills/" target="_blank" rel="noopener">View on the OCN London website</a>
+        </div>
+        <div class="official-card">
+          <h3>Level 1 qualification</h3>
+          <p class="qual-code">OCNLR Level 1 Certificate in Skills for Professions in Digital Industries and Technology<br />Qualification number: 603/4186/5</p>
+          <p>Requires a minimum of 18 credits including the Study Skills and Time Management units. Our route covers 19 credits across six practical units.</p>
+          <a class="big-btn l1" href="https://ocnlondon.org.uk/qualifications/digital-comp/l1-cert-sfp-digital-ind-tech/" target="_blank" rel="noopener">View on the OCN London website</a>
+        </div>
+      </div>
+
+      <p class="new-tab-note">
+        Both links open the OCN London website in a new tab. You can also look either qualification up on the
+        <a href="https://register.ofqual.gov.uk/" target="_blank" rel="noopener">Ofqual Register of Regulated Qualifications</a>
+        using its qualification number.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p><strong>Practical Computing</strong> · Young Lewisham Project</p>
+      <p>Workshop-led delivery using real devices, micro:bits, Raspberry Pi, games, websites, sensors and robot ideas.</p>
+      <p>This page is a course guide written for learners. It is not the official OCN London website. “I have finished this unit” ticks are saved only on this device — nothing is sent anywhere.</p>
+      <a class="top-link" href="#main">↑ Back to top</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var doc = document.documentElement;
+
+      function readStore(key, fallback) {
+        try { return JSON.parse(localStorage.getItem(key)) || fallback; }
+        catch (e) { return fallback; }
+      }
+      function writeStore(key, value) {
+        try { localStorage.setItem(key, JSON.stringify(value)); } catch (e) {}
+      }
+
+      /* ----- Reading settings ----- */
+      var settings = readStore("pc-settings", {});
+
+      function applySettings() {
+        document.querySelectorAll("[data-size-btn]").forEach(function (btn) {
+          btn.setAttribute("aria-pressed", String(btn.dataset.sizeBtn === (doc.dataset.size || "1")));
+        });
+        var spacingBtn = document.getElementById("spacing-btn");
+        spacingBtn.setAttribute("aria-pressed", String(doc.dataset.spacing === "wide"));
+        var themeBtn = document.getElementById("theme-btn");
+        themeBtn.setAttribute("aria-pressed", String(doc.dataset.theme === "dark"));
+      }
+
+      document.querySelectorAll("[data-size-btn]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          doc.dataset.size = btn.dataset.sizeBtn;
+          settings.size = btn.dataset.sizeBtn;
+          writeStore("pc-settings", settings);
+          applySettings();
+        });
+      });
+
+      document.getElementById("spacing-btn").addEventListener("click", function () {
+        doc.dataset.spacing = doc.dataset.spacing === "wide" ? "normal" : "wide";
+        settings.spacing = doc.dataset.spacing;
+        writeStore("pc-settings", settings);
+        applySettings();
+      });
+
+      document.getElementById("theme-btn").addEventListener("click", function () {
+        doc.dataset.theme = doc.dataset.theme === "dark" ? "light" : "dark";
+        settings.theme = doc.dataset.theme;
+        writeStore("pc-settings", settings);
+        applySettings();
+      });
+
+      applySettings();
+
+      /* ----- Unit progress (saved on this device only) ----- */
+      var progress = readStore("pc-progress", {});
+
+      function updateLevelProgress(section) {
+        var boxes = section.querySelectorAll("input[data-unit]");
+        var done = section.querySelectorAll("input[data-unit]:checked").length;
+        var total = boxes.length;
+        var fill = section.querySelector(".progress-fill");
+        var text = section.querySelector(".progress-text");
+        if (fill) fill.style.width = (total ? (done / total) * 100 : 0) + "%";
+        if (text) {
+          text.textContent = done + " of " + total + " units marked done" + (done === total && total > 0 ? " — all finished! 🎉" : "");
+        }
+      }
+
+      var sections = document.querySelectorAll("section[data-level]");
+
+      document.querySelectorAll("input[data-unit]").forEach(function (box) {
+        box.checked = !!progress[box.dataset.unit];
+        box.addEventListener("change", function () {
+          progress[box.dataset.unit] = box.checked;
+          writeStore("pc-progress", progress);
+          updateLevelProgress(box.closest("section[data-level]"));
+        });
+      });
+
+      sections.forEach(updateLevelProgress);
+
+      /* ----- Open all / close all ----- */
+      document.querySelectorAll("[data-expand]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll("#" + btn.dataset.expand + " details.unit").forEach(function (d) { d.open = true; });
+        });
+      });
+      document.querySelectorAll("[data-collapse]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          document.querySelectorAll("#" + btn.dataset.collapse + " details.unit").forEach(function (d) { d.open = false; });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
